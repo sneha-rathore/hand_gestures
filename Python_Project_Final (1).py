@@ -26,22 +26,11 @@ while (cap.isOpened()):
     # show thresholded image
     cv2.imshow('Thresholded', thresh1)
 
-    # check OpenCV version to avoid unpacking error
-    # (version, _, _) = cv2.__version__.split('.')
-
-    #if version == '3':
-     #    image, contours, hierarchy = cv2.findContours(thresh1.copy(), \
-      #          cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-
     contours, hierarchy = cv2.findContours(thresh1.copy(), cv2.RETR_TREE, \
                                            cv2.CHAIN_APPROX_NONE)
 
     # find contour with max area
     cnt = max(contours, key=lambda x: cv2.contourArea(x))
-
-    # create bounding rectangle around the contour (can skip below two lines)
-    # x, y, w, h = cv2.boundingRect(cnt)
-    # cv2.rectangle(crop_img, (x, y), (x+w, y+h), (0, 0, 255), 0)
 
     # finding convex hull
     hull = cv2.convexHull(cnt)
