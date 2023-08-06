@@ -41,7 +41,7 @@ while (cap.isOpened()):
     cv2.drawContours(drawing, [hull], 0, (0, 0, 255), 0)
 
     # finding convex hull
-    hull = cv2.convexHull(cnt, returnPoints=False)  # check from video
+    hull = cv2.convexHull(cnt, returnPoints=False)  
 
     # finding convexity defects
     defects = cv2.convexityDefects(cnt, hull)
@@ -72,7 +72,6 @@ while (cap.isOpened()):
         # dist = cv2.pointPolygonTest(cnt,far,True)
 
         # draw a line from start to end i.e. the convex points (finger tips)
-        # (can skip this part)
         cv2.line(crop_img, start, end, [0, 255, 0], 2)
         # cv2.circle(crop_img,far,5,[0,0,255],-1)
 
